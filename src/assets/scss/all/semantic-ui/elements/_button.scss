@@ -2803,7 +2803,7 @@
 
 .ui.teal.buttons .button,
 .ui.teal.button {
-  background-color: #00B5AD;
+  background-color: #{$teal-color};
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
@@ -2842,9 +2842,9 @@
 /* Basic */
 .ui.basic.teal.buttons .button,
 .ui.basic.teal.button {
-  -webkit-box-shadow: 0px 0px 0px 1px #00B5AD inset !important;
-          box-shadow: 0px 0px 0px 1px #00B5AD inset !important;
-  color: #00B5AD !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #{$teal-color} inset !important;
+          box-shadow: 0px 0px 0px 1px #{$teal-color} inset !important;
+  color: #{$teal-color} !important;
 }
 .ui.basic.teal.buttons .button:hover,
 .ui.basic.teal.button:hover {
@@ -3109,7 +3109,7 @@
 
 .ui.yellow.buttons .button,
 .ui.yellow.button {
-  background-color: #FBBD08;
+  background-color: #{$yellow};
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
@@ -3148,9 +3148,9 @@
 /* Basic */
 .ui.basic.yellow.buttons .button,
 .ui.basic.yellow.button {
-  -webkit-box-shadow: 0px 0px 0px 1px #FBBD08 inset !important;
-          box-shadow: 0px 0px 0px 1px #FBBD08 inset !important;
-  color: #FBBD08 !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #{$yellow} inset !important;
+          box-shadow: 0px 0px 0px 1px #{$yellow} inset !important;
+  color: #{$yellow} !important;
 }
 .ui.basic.yellow.buttons .button:hover,
 .ui.basic.yellow.button:hover {

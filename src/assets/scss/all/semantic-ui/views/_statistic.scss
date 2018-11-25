@@ -330,7 +330,7 @@
 .ui.yellow.statistics .statistic > .value,
 .ui.statistics .yellow.statistic > .value,
 .ui.yellow.statistic > .value {
-  color: #FBBD08;
+  color: #{$yellow};
 }
 .ui.olive.statistics .statistic > .value,
 .ui.statistics .olive.statistic > .value,
@@ -345,7 +345,7 @@
 .ui.teal.statistics .statistic > .value,
 .ui.statistics .teal.statistic > .value,
 .ui.teal.statistic > .value {
-  color: #00B5AD;
+  color: #{$teal-color};
 }
 .ui.blue.statistics .statistic > .value,
 .ui.statistics .blue.statistic > .value,

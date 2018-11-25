@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '~/components/Header'
 import Sidebar from '~/components/Sidebar'
 
+import Dashboard from '~/views/Dashboard'
 import School from '~/views/School'
 
 import './styles.css'
@@ -19,10 +20,13 @@ class Main extends Component {
 		return (
 			<React.Fragment>
 				<Sidebar isExpanded={this.state.sidebarExpanded} {...this.props} />
-				<Header isExpanded={this.state.sidebarExpanded} toggle={() => this.setState({sidebarExpanded: !this.state.sidebarExpanded})} />
-				<Switch>
-					<Route path='/school' component={School} />
-				</Switch>
+				<div className={`${this.state.sidebarExpanded ? 'margin-left' : ''}`}>
+					<Header toggle={() => this.setState({sidebarExpanded: !this.state.sidebarExpanded})} />
+					<Switch>
+						<Route exact path='/dashboard' component={Dashboard} />
+						<Route exact path='/schools' component={School} />
+					</Switch>
+				</div>
 			</React.Fragment>
 			)
 	}

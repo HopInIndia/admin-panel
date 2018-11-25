@@ -592,8 +592,8 @@ a.ui.basic.orange.label:hover {
 
 .ui.yellow.labels .label,
 .ui.yellow.label {
-  background-color: #FBBD08 !important;
-  border-color: #FBBD08 !important;
+  background-color: #{$yellow} !important;
+  border-color: #{$yellow} !important;
   color: #FFFFFF !important;
 }
 
@@ -619,8 +619,8 @@ a.ui.yellow.label:hover {
 /* Basic */
 .ui.basic.yellow.label {
   background-color: #FFFFFF !important;
-  color: #FBBD08 !important;
-  border-color: #FBBD08 !important;
+  color: #{$yellow} !important;
+  border-color: #{$yellow} !important;
 }
 .ui.basic.yellow.labels a.label:hover,
 a.ui.basic.yellow.label:hover {
@@ -715,8 +715,8 @@ a.ui.basic.green.label:hover {
 
 .ui.teal.labels .label,
 .ui.teal.label {
-  background-color: #00B5AD !important;
-  border-color: #00B5AD !important;
+  background-color: #{$teal-color} !important;
+  border-color: #{$teal-color} !important;
   color: #FFFFFF !important;
 }
 
@@ -742,8 +742,8 @@ a.ui.teal.label:hover {
 /* Basic */
 .ui.basic.teal.label {
   background-color: #FFFFFF !important;
-  color: #00B5AD !important;
-  border-color: #00B5AD !important;
+  color: #{$teal-color} !important;
+  border-color: #{$teal-color} !important;
 }
 .ui.basic.teal.labels a.label:hover,
 a.ui.basic.teal.label:hover {
