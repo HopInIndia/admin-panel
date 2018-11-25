@@ -12,7 +12,7 @@ class Header extends Component {
 	render(){
 		const { isExpanded, toggle } = this.props
 		return (
-			<div className={"header " + (isExpanded ? 'margin-left' : '')}>
+			<div className={`header ${isExpanded ? 'margin-left' : ''}`}>
 				<div className="ui primary menu">
 					<a className="item" onClick={toggle}>
 						<i className="align justify icon"></i>

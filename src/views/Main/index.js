@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '~/components/Header'
 import Sidebar from '~/components/Sidebar'
+
+import School from '~/views/School'
 
 import './styles.css'
 
@@ -14,10 +17,13 @@ class Main extends Component {
 	}
 	render(){
 		return (
-			<div className="main">
+			<React.Fragment>
+				<Sidebar isExpanded={this.state.sidebarExpanded} {...this.props} />
 				<Header isExpanded={this.state.sidebarExpanded} toggle={() => this.setState({sidebarExpanded: !this.state.sidebarExpanded})} />
-				<Sidebar isExpanded={this.state.sidebarExpanded} />
-			</div>
+				<Switch>
+					<Route path='/school' component={School} />
+				</Switch>
+			</React.Fragment>
 			)
 	}
 }

@@ -1,18 +1,12 @@
-.sidebar{
-	position: absolute;
-	top: 0px;
-	height: 100%;
-	background: #EEE;
+.app-sidebar{
 	.logo-container{
 		height: 8rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		color: #FFF;
 	}
 	.ui.vertical.menu{
-		background: transparent;
 		width: 18rem;
-		border: 0px;
-		box-shadow: none;
 	}
 }

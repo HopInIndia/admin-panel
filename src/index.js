@@ -6,6 +6,8 @@ import store from '~/redux'
 
 import App from '~/app'
 
+import '~/assets/scss/style.css'
+
 ReactDOM.render((
 	<Provider store={store}>
 		<App />

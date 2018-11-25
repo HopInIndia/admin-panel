@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link, Route } from "react-router-dom";
 import { connect } from 'react-redux'
 import './styles.css'
 
@@ -9,24 +10,23 @@ class Sidebar extends Component {
 		}
 	}
 	render(){
-		const { isExpanded } = this.props
-		if(!isExpanded) return null
+		const { isExpanded, match } = this.props
 		return (
-			<div className="sidebar">
-				<div className="ui vertical menu">
+			<div className="app-sidebar">
+				<div className={`ui sidebar inverted vertical menu left ${isExpanded ? 'visible' : ''}`}>
 					<div className="logo-container">
 						<h2>HopIn Admin Panel</h2>
 					</div>
-					<a className="active teal item">
+					<Link to='/dashboard' className={`teal item ${match.url === '/dashboard' ? 'active': ''}`} >
 						Dashboard
 						<div className="ui teal left pointing label">1</div>
-					</a>
-					<a className="item">
+					</Link>
+					<Link to='/schools' className={`item teal ${match.url === '/schools' ? 'active': ''}`}>
 						Schools
-					</a>
-					<a className="item">
+					</Link>
+					<Link to='/routes' className={`item teal ${match.url === '/routes' ? 'active': ''}`}>
 						Routes
-					</a>
+					</Link>
 					<div className="item">
 						<div className="ui transparent icon input">
 							<input type="text" placeholder="Search mail..." />

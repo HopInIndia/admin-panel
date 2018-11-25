@@ -1,15 +1,9 @@
-.sidebar {
-  position: absolute;
-  top: 0px;
-  height: 100%;
-  background: #EEE; }
-  .sidebar .logo-container {
-    height: 8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-  .sidebar .ui.vertical.menu {
-    background: transparent;
-    width: 18rem;
-    border: 0px;
-    box-shadow: none; }
+.app-sidebar .logo-container {
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF; }
+
+.app-sidebar .ui.vertical.menu {
+  width: 18rem; }

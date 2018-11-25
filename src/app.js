@@ -26,7 +26,7 @@ class App extends Component {
 		if(!this.props.user.isLoggedIn && refreshToken){
 			const accessToken = await getAccessToken(refreshToken)
 			if(accessToken){
-				this.props.dispatch(userInfo(accessToken))				
+				await this.props.dispatch(userInfo(accessToken))				
 			}
 		}
 		this.setState({
@@ -41,20 +41,12 @@ class App extends Component {
 
 		return (
 			<HashRouter>
-				<div
-					id="main-wrapper"
-					data-theme="light"
-					data-layout="vertical"
-					data-sidebartype="full"
-					data-sidebar-position="fixed"
-					data-header-position="fixed"
-					data-boxed-layout="full"
-				>
+				<React.Fragment>
 					<Switch>
 						<Route exact path='/' component={Login}  />
 						<AuthRoute isLoggedIn={isLoggedIn} path='/*' component={Main}  />					
 					</Switch>
-				</div>
+				</React.Fragment>
 			</HashRouter>
 		)
 	}
