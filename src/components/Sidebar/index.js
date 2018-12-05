@@ -12,19 +12,19 @@ class Sidebar extends Component {
 	render(){
 		const { isExpanded, match } = this.props
 		return (
-			<div className="app-sidebar">
+			<div className="app-sidebar full height">
 				<div className={`ui sidebar inverted vertical menu left ${isExpanded ? 'visible' : ''}`}>
 					<div className="logo-container">
 						<h2>HopIn Admin Panel</h2>
 					</div>
-					<Link to='/dashboard' className={`teal item ${match.url === '/dashboard' ? 'active': ''}`} >
+					<Link to='/dashboard' className={`teal item ${match.url.startsWith('/dashboard') ? 'active': ''}`} >
 						Dashboard
 						<div className="ui teal left pointing label">1</div>
 					</Link>
-					<Link to='/schools' className={`item teal ${match.url === '/schools' ? 'active': ''}`}>
-						Schools
+					<Link to='/destinations' className={`item teal ${match.url.startsWith('/destinations') ? 'active': ''}`}>
+						Destinations
 					</Link>
-					<Link to='/routes' className={`item teal ${match.url === '/routes' ? 'active': ''}`}>
+					<Link to='/routes' className={`item teal ${match.url.startsWith('/routes') ? 'active': ''}`}>
 						Routes
 					</Link>
 					<div className="item">

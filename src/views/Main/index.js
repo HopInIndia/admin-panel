@@ -5,7 +5,7 @@ import Header from '~/components/Header'
 import Sidebar from '~/components/Sidebar'
 
 import Dashboard from '~/views/Dashboard'
-import School from '~/views/School'
+import Destination from '~/views/Destination'
 
 import './styles.css'
 
@@ -24,7 +24,7 @@ class Main extends Component {
 					<Header toggle={() => this.setState({sidebarExpanded: !this.state.sidebarExpanded})} />
 					<Switch>
 						<Route exact path='/dashboard' component={Dashboard} />
-						<Route exact path='/schools' component={School} />
+						<Route path='/destinations' component={Destination} />
 					</Switch>
 				</div>
 			</React.Fragment>

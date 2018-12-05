@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
+import { Link, Route } from "react-router-dom";
 import { connect } from 'react-redux'
-import Header from '~/components/Header'
-import Sidebar from '~/components/Sidebar'
 
-import './styles.css'
-
-class School extends Component {
+class ListDestinations extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
@@ -14,13 +11,13 @@ class School extends Component {
 	}
 	render(){
 		return (
-			<div className="schools">
-				School
+			<div className="container">
+				ListDestinations
 			</div>
-			)
+		)
 	}
 }
 
 export default connect(state => (
 	{ ...state.user }
-))(School)
+))(ListDestinations)
