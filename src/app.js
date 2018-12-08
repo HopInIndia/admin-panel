@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { getAccessToken, userInfo } from '~/redux/actions/user'
+import { userInfo } from '~/redux/actions/user'
 import Login from '~/views/Login'
 import Main from '~/views/Main'
 
@@ -22,12 +22,8 @@ class App extends Component {
 		}
 	}
 	async componentDidMount(){
-		const refreshToken = window.localStorage.getItem('refreshToken')
-		if(!this.props.user.isLoggedIn && refreshToken){
-			const accessToken = await getAccessToken(refreshToken)
-			if(accessToken){
-				await this.props.dispatch(userInfo(accessToken))				
-			}
+		if(!this.props.user.isLoggedIn && window.localStorage.getItem('refreshToken')){
+			await this.props.dispatch(userInfo())
 		}
 		this.setState({
 			isLoading: false

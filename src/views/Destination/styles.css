@@ -1,5 +1,6 @@
 #destinations {
-  padding: .5rem; }
+  padding: .5rem;
+  padding-bottom: 5rem; }
   #destinations .add-new-destination .header {
     margin: 10px 0px; }
   #destinations .add-new-destination .map-icon-container {

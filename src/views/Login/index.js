@@ -7,7 +7,8 @@ class Login extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			loading: false
+			loading: false,
+			error: null
 		}
 		this.processLogin = this.processLogin.bind(this)
 	}
@@ -21,23 +22,47 @@ class Login extends Component {
 			this.props.history.push("/dashboard")
 		}
 	}
-	processLogin(event){
+	async processLogin(event){
 		event.preventDefault()
-		const creds = {
-			phone: this.phone.value,
-			password: this.password.value
+		try{
+			this.setState({
+				loading: true,
+				error: null
+			})
+			const creds = {
+				phone: this.phone.value,
+				password: this.password.value
+			}
+			const loginReponse = await this.props.dispatch(login(creds))
+			if(!loginReponse){
+				this.setState({
+					loading: false,
+					error: this.props.user.error || 'An error occured.'
+				})
+			}
+		}catch(error){
+			this.setState({
+				loading: false,
+				error: error || 'An error occured.'
+			})
 		}
-		this.props.dispatch(login(creds))
 	}
 	render(){
 		return (
 			<div className="login-box">
 				<div className="form-container">
-					<form className="ui center form" onSubmit={this.processLogin}>
+					<form className={`ui center form ${this.state.error ? 'error' : ''}`} onSubmit={this.processLogin}>
 						<h2 className="ui center aligned icon header yellow ">
 							<i className="circular lock icon"></i>
 							HopIn - Admin Panel
 						</h2>
+						{
+							this.state.error && (
+								<div className="ui error message">
+									{this.state.error}
+								</div>
+							)
+						}
 						<div className="field">
 							<label>Phone Number</label>
 							<input type="text" placeholder="Phone Number" ref={i => this.phone = i} />

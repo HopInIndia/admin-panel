@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import { promisify } from 'bluebird'
 import React, { Component } from 'react'
 import { Link, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -20,7 +21,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
     		lat: positionObj.lat(),
     		lng: positionObj.lng()
     	}
-    	props.onCenterChanged(position, bounds)
+    	props.onCenterChanged && props.onCenterChanged(position, bounds)
     }}
   >
     <SearchBox
@@ -42,7 +43,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
 				lat: place.geometry.location.lat(),
 				lng: place.geometry.location.lng()
 			}));
-			props.onPlacesChanged(markerPositions)
+			props.onPlacesChanged && props.onPlacesChanged(markerPositions)
 		}}
     >
     {
@@ -100,6 +101,17 @@ class GMap extends Component {
 			</div>
 			)
 	}
+}
+
+export const getLocationAddress = async (latLng) => {
+	return new Promise((resolve, reject) => {
+		const geocoder = new window.google.maps.Geocoder()
+		geocoder.geocode({
+			'latLng': latLng
+		}, (result, status) => {
+			return (status === 'OK' && result[0]) ? resolve(result[0]) : reject()
+		})		
+	})
 }
 
 export default connect(state => (

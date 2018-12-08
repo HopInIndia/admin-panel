@@ -1,30 +1,9 @@
 import config from '~/config'
-
-export const getAccessToken = async (refreshToken) => {
-	try{
-		const response = await fetch(`${config.apiBase}/oauth/token?refreshToken=${refreshToken}`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				'x-api-key': '3eIx0mgR6zXTRp8Eorz1UoWpF3ua4Q1h',
-			}
-		})
-		if(response.status === 200){
-			const responseBody = await response.json()
-			if(responseBody.success) {
-				window.localStorage.setItem('accessToken', responseBody.accessToken)
-				return responseBody.accessToken
-			}
-			return null
-		}
-		return null
-	}catch(error){
-		return null
-	}
-}
+import { getAccessToken } from '~/redux/helpers'
 
 export const userInfo = (accessToken) => async (dispatch) => {
 	try{
+		const accessToken = await getAccessToken()
 		const response = await fetch(`${config.apiBase}/users/me`, {
 			method: 'GET',
 			headers: {
@@ -40,29 +19,24 @@ export const userInfo = (accessToken) => async (dispatch) => {
 					type: 'LOGIN_SUCCESS',
 					payload: responseBody.user
 				})
-			}else{
-				dispatch({
-					type: 'LOGIN_FAILED',
-					payload: {
-						error: "Invalid token."
-					}
-				})				
+				return true
 			}
-		}else{
-			dispatch({
-				type: 'LOGIN_FAILED',
-				payload: {
-					error: "Invalid credentials."
-				}
-			})
 		}
+		dispatch({
+			type: 'LOGIN_FAILED',
+			payload: {
+				error: "An error has occured."
+			}
+		})
+		return false
 	}catch(error){
 		dispatch({
 			type: 'LOGIN_FAILED',
 			payload: {
-				error: "Opps! Something went wrong."
+				error: error
 			}
 		})
+		return false
 	}
 }
 
@@ -85,29 +59,24 @@ export const login = (credentials) => async (dispatch) => {
 					type: 'LOGIN_SUCCESS',
 					payload: responseBody.user
 				})
-			}else{
-				dispatch({
-					type: 'LOGIN_FAILED',
-					payload: {
-						error: "Invalid credentials."
-					}
-				})				
+				return true
 			}
-		}else{
-			dispatch({
-				type: 'LOGIN_FAILED',
-				payload: {
-					error: "Invalid credentials."
-				}
-			})
 		}
+		dispatch({
+			type: 'LOGIN_FAILED',
+			payload: {
+				error: "Invalid credentials."
+			}
+		})
+		return false
 	}catch(error){
 		dispatch({
 			type: 'LOGIN_FAILED',
 			payload: {
-				error: "Opps! Something went wrong."
+				error: error
 			}
 		})
+		return false
 	}
 }
 
