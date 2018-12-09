@@ -11,12 +11,12 @@ class AddDestination extends Component {
 		this.state = {
 			sidebarExpanded: true,
 			centerPosition: { 
-				lat: -34.397,
-				lng: 150.644
+				lat: 41.8507300,
+				lng: -87.6512600
 			},
 			markerPosition: { 
-				lat: -34.397,
-				lng: 150.644
+				lat: 41.8507300,
+				lng: -87.6512600
 			},
 			isProgress: false,
 			error: null,
@@ -155,6 +155,7 @@ class AddDestination extends Component {
 								showMarker={false}
 								showOverlayPointer={true}
 								showSearchBar={true}
+								directions={false}
 								searchPlaceholder={`Search for places`}
 								center={this.state.centerPosition}
 								defaultCenter={this.state.centerPosition}
